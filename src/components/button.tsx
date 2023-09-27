@@ -1,14 +1,18 @@
+import React from "react"
 import { ButtonStyle } from "../assets/styles/button";
 
 interface ButtonProps {
     title: string;
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export function Button({title}:ButtonProps) {
+export function Button({title, onClick}:ButtonProps) {
     return (
         <ButtonStyle>
-            <button className="headline">{title}</button>
+            <button 
+                className="headline"
+                onClick={onClick}
+            >{title}</button>
         </ButtonStyle>  
     );
 }
