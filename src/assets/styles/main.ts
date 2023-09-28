@@ -10,6 +10,7 @@ export const MainStyle = styled.main `
     section {
         margin-top: 39px;
         width: 59.688rem;
+        max-width: 100%;
         height: calc(100% - 39px);
 
         display: flex;
@@ -19,6 +20,13 @@ export const MainStyle = styled.main `
             display: flex;
             flex-direction: column;
             gap: 18px;
+        }
+    }
+
+    @media screen and (max-width: 490px){
+        section {
+            flex-direction: column;
+            align-items: center;
         }
     }
 `;

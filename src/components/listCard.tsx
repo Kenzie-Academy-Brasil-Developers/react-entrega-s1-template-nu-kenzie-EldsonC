@@ -1,7 +1,21 @@
+import { useEffect, useState } from "react";
 import { ListCardStyle } from "../assets/styles/listCard";
 import { Card } from "./card";
 
+interface CardProps {
+    title: string;
+    value: string;
+}
 export function ListCard() {
+    const [ arrayCard, setArraycard ] = useState<CardProps[]>([])
+
+    useEffect(() => {
+        const cardData = localStorage.getItem("cardData")
+        if (cardData) {
+            setArraycard(JSON.parse(cardData))
+        }
+    }, [])
+
     return (
         <ListCardStyle>
             <div className="header_list">
@@ -9,29 +23,16 @@ export function ListCard() {
             </div>
 
             <div className="container_cards">
-                <Card
-                    description="Salário - Mês Dezembro"
-                    value={6660}
-                    type="Entrada"
-                />
-
-                <Card
-                    description="Salário - Mês Dezembro"
-                    value={6660}
-                    type="Entrada"
-                />
-
-                <Card
-                    description="Salário - Mês Dezembro"
-                    value={6660}
-                    type="Entrada"
-                />
-
-                <Card
-                    description="Salário - Mês Dezembro"
-                    value={6660}
-                    type="Entrada"
-                />
+                {arrayCard.map((data:CardProps, key:number) => {
+                    return (
+                        <Card
+                            key={key}
+                            description={data.title}
+                            value={data.value}
+                            type="Entrada"
+                        />
+                    )
+                })}
             </div>
         </ListCardStyle>
     );

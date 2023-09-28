@@ -13,15 +13,24 @@ export function Form() {
     const [ description, setDescription ] = useState("")
     const [ values, setValue ] = useState("")
     const [ cardArray, setCardArray ] = useState<CardData[]>([])
-    // const [ entry, setEntry ] = useState("")
+    const [ stateBtn, setStateBtn ] = useState(false)
 
+    // const [ entry, setEntry ] = useState("")
+    
     useEffect(() => {
         const dataCard = localStorage.getItem("cardData")
         if (dataCard) {
             setCardArray(JSON.parse(dataCard));
         }
-    }, [])
 
+        if (description && values != "") {
+            setStateBtn(true)
+        } else {
+            setStateBtn(false)
+        }
+    }, [description, values])
+
+    
     const addCard = () => {
         const newCardArray = [...cardArray]
 
@@ -60,6 +69,7 @@ export function Form() {
             <SelectComponent/>
 
             <Button
+                active={stateBtn}
                 onClick={(e) => {
                     e.preventDefault()
                     addCard()

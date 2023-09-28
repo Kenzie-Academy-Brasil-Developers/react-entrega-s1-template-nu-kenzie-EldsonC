@@ -1,12 +1,15 @@
 import { CardStyle } from "../assets/styles/card";
+import { BtnDelete } from "./btnDelete";
 
 interface CardProps {
     description: string;
-    value: number;
+    value: string;
     type: string;
 }
 
 export function Card({description, value, type}:CardProps) {
+    const valueInt = parseInt(value)
+
     return (
         <CardStyle>
             <div className="left_container">
@@ -15,10 +18,11 @@ export function Card({description, value, type}:CardProps) {
             </div>
 
             <div className="right_container">
-                <p className="body">R$ {value.toLocaleString('pt-BR', {
+                <p className="body">{valueInt.toLocaleString('pt-BR', {
                     style: "currency",
                     currency: "BRL"
                 })}</p>
+                <BtnDelete/>
             </div>
         </CardStyle>
     );
