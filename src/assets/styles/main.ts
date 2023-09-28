@@ -27,6 +27,7 @@ export const MainStyle = styled.main `
         section {
             flex-direction: column;
             align-items: center;
+            width: calc(100% - 58px);
         }
     }
 `;

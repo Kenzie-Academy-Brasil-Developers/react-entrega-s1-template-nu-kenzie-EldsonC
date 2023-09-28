@@ -7,7 +7,8 @@ export const ListCardStyle = styled.div `
     display: flex;
     flex-direction: column;
 
-    .container_cards {
+    .container_cards { 
+        padding-bottom: 30px;
         margin-top: 29px;
         display: flex;
         flex-direction: column;
@@ -20,10 +21,6 @@ export const ListCardStyle = styled.div `
 
         .header_list {
             margin-top: 19px;
-        }
-
-        .container_cards {
-            padding-bottom: 30px;
         }
     }
 `;
