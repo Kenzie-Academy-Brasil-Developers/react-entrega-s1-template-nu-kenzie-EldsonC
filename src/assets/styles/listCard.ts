@@ -14,7 +14,7 @@ export const ListCardStyle = styled.div `
         gap: 15px;
     }
 
-    @media screen and (max-width: 490px) {
+    @media screen and (max-width: 923px) {
         padding: 0px 29px;
         width: calc(100% - 58px);
 

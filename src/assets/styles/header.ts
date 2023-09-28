@@ -16,7 +16,7 @@ export const HeaderStyle = styled.header `
         width: 59.688rem;
     }
 
-    @media screen and (max-width: 490px){
+    @media screen and (max-width: 923px){
         padding: 0px 29px;
         width: calc(100vw - 58px);
         height: 69px;

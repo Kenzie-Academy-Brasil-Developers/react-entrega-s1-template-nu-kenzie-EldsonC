@@ -36,7 +36,7 @@ export const CardStyle = styled.div `
         }
     }
 
-    @media screen and (max-width: 490px){
+    @media screen and (max-width: 923px){
         padding-top: 8px;
         padding-bottom: 19px;
         height: auto;

@@ -23,7 +23,7 @@ export const MainStyle = styled.main `
         }
     }
 
-    @media screen and (max-width: 490px){
+    @media screen and (max-width: 923px){
         section {
             flex-direction: column;
             align-items: center;
