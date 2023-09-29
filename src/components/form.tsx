@@ -7,16 +7,38 @@ import { SelectComponent } from "./select";
 interface CardData {
     title: string;
     value: string;
+    entry: string;
 }
 
-export function Form() {
+export function Form({ onUpdate }: { onUpdate: (newState: string) => void}) {
+
     const [ description, setDescription ] = useState("")
     const [ values, setValue ] = useState("")
+    const [ entry, setEntry ] = useState("")
+
     const [ cardArray, setCardArray ] = useState<CardData[]>([])
     const [ stateBtn, setStateBtn ] = useState(false)
 
-    // const [ entry, setEntry ] = useState("")
-    
+    const addCard = () => {
+        const newCardArray = [...cardArray]
+
+        const dataCard: CardData = {
+            title: description,
+            value: values,
+            entry: entry
+        }
+        
+        newCardArray.push(dataCard)
+
+        setCardArray(newCardArray)
+        
+        localStorage.setItem("cardData", JSON.stringify(newCardArray))
+
+        if (onUpdate) {
+            onUpdate(JSON.stringify(newCardArray))
+        }
+    }
+
     useEffect(() => {
         const dataCard = localStorage.getItem("cardData")
         if (dataCard) {
@@ -29,22 +51,6 @@ export function Form() {
             setStateBtn(false)
         }
     }, [description, values])
-
-    
-    const addCard = () => {
-        const newCardArray = [...cardArray]
-
-        const dataCard: CardData = {
-            title: description,
-            value: values
-        }
-        
-        newCardArray.push(dataCard)
-
-        setCardArray(newCardArray)
-
-        localStorage.setItem("cardData", JSON.stringify(newCardArray))
-    }
 
     return (
         <FormStyle>
@@ -66,7 +72,10 @@ export function Form() {
             />
 
             <label className="body">Tipo de valor</label>
-            <SelectComponent/>
+            <SelectComponent
+                value={entry}
+                onChange={setEntry}
+            />
 
             <Button
                 active={stateBtn}
